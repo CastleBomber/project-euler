@@ -4,39 +4,24 @@
 #  going to change:
 #  return array
 
-def SieveOfEratosthenes(n):
+def SieveOfEratosthenes(max_value):
 
-    setOfPrimes = set() ### my code :)
+    dictOfPrimes = dict()
 
-    # Create a boolean array "prime[0..n]" and initialize
-    #  all entries it *has" as true. A value in prime[i] will
-    #  finally be false if i is Not a prime, else true.
-    prime = [True for i in range(n+1)]
+    # boolean array prime[...] all entries true
+    prime = [True for i in range(max_value+1)]
     p = 2
-    while (p * p <= n):
+    key = 1
 
-        # If prime[p] is not changed, then it is a prime
+    while (p * p <= max_value):
         if (prime[p] == True):
-
-            # Update all multiples of p
-            for i in range(p * 2, n+1, p):
+            for i in range(p * 2, max_value+1, p):
                 prime[i] = False
-
         p += 1
 
-    # Print all prime numbers
-    for p in range(2, n):
-        if prime[p]:
-            setOfPrimes.add(p) ### my code :)
-            ###print(p)
-    return setOfPrimes
+    for value in range(2, max_value):
+        if prime[value]:
+            dictOfPrimes[key] = value
+            key = key + 1
 
-# for some reason, calling SoE from outside run's driver
-### driver program
-##def main():
-##    n = 30
-##    print("Following are the prime numbers smaller")
-##    print("than or equal to", n)
-##    SieveOfEratosthenes(n)
-##
-##main()
+    return dictOfPrimes
