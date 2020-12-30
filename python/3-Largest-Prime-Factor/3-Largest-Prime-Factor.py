@@ -108,10 +108,6 @@ def finalCut(smallArray):
             if outer%inner == 0 and outer!=inner and outer in copy:
                 copy.remove(outer)
 
-                 
     return copy
-        
-                                  
-                                
 
 main()

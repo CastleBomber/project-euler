@@ -11,7 +11,6 @@ def main() :
     try:
         thousand = int(1000)
         ten = int(10)
-
         sum = 0
 
         for x in range(1, thousand) :
@@ -19,10 +18,7 @@ def main() :
                 sum = sum + x
 
         print(sum)
-        
 
-
-        
     except ValueError:
             print("ERROR")
 

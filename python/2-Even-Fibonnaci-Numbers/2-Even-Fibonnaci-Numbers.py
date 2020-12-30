@@ -30,12 +30,8 @@ def main() :
             
         #print("sum: ", sum)
         print("evenSum: ", evenSum) # 4613732
-        
 
-
-        
     except ValueError:
             print("ERROR")
-
 
 main()

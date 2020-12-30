@@ -6,6 +6,7 @@
     
     Date:   [20 DEC 2018]
     Author: [CastleBomber]
+
 **************************************************************
 """
 
@@ -78,7 +79,6 @@ def check(finalCheck, smallestNumber):
                 finalTruths+=1
     return True
 
- 
 ## Used in Part 2, set of all #'s to divide into smallestNumber
 #  @param
 #       x - arbitrary value, the highest # to check
@@ -92,6 +92,4 @@ def generateSet1ThroughX(x):
 
     return mySet
 
-    
-    
 driver()
