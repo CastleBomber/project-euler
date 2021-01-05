@@ -1,27 +1,40 @@
 ## Python program to print all primes smaller than or
 #  equal to n using Sieve of Eratosthenes
 
-#  going to change:
-#  return array
-
 def SieveOfEratosthenes(max_value):
 
-    dictOfPrimes = dict()
+    global max
+    global primes
+    max = max_value
+    primes = dict()
 
-    # boolean array prime[...] all entries true
-    prime = [True for i in range(max_value+1)]
-    p = 2
-    key = 1
+    primeChecked = getPrimes(max_value)
+    setPrimes(primeChecked)
+
+    return primes
+
+# returns primeCheck -
+#         boolean array with 1's corresponding to primes
+def getPrimes(max_value):
+    # if max_value = 4, prime[11111] ~= [{0}{1}{2}{3}{4}]
+    primeCheck = [True for i in range(max_value+1)]
+    p = 2 # skip 0,1 not added to primes
 
     while (p * p <= max_value):
-        if (prime[p] == True):
+        if (primeCheck[p] == True):
             for i in range(p * 2, max_value+1, p):
-                prime[i] = False
+                primeCheck[i] = False
         p += 1
 
-    for value in range(2, max_value):
-        if prime[value]:
-            dictOfPrimes[key] = value
-            key = key + 1
+    return primeCheck
 
-    return dictOfPrimes
+# goes through boolean array
+# neglects 0's (non prime)
+# adds 1's (primes)
+def setPrimes(primeChecked):
+    key = 1
+
+    for value in range(2, max):
+        if primeChecked[value]:
+            primes[key] = value
+            key = key + 1

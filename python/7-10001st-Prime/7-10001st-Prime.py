@@ -16,9 +16,8 @@ from sieveOfEratosthenes import SieveOfEratosthenes
 def main():
 
     primes = dict()
-    max_value = 106000
+    max_value = 106000 # chosen by logic
     spot = 10001
-    loop_count = 0
 
     primes = SieveOfEratosthenes(max_value)
     print(primes[spot])
