@@ -1,15 +1,16 @@
 #include <iostream>
 #include <unordered_map>
+#include <vector>
 #include "HeaderFunctions.h"
 using namespace std;
 
 int main()
 {
-    unordered_map<int, int> primes;
-    int max_value = 106000;
-    int spot = 1;
+    vector<int> primes;
+    int maxValue = 106000; // wisely chosen, primes must be within
+    int spot = 10001;
 
-    Log("hi World!");
-    InitLog();
+    primes = SieveOfEratosthenes(maxValue);
+    cout << primes[spot] << endl;
     cin.get();
 }
