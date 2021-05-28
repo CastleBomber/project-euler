@@ -1,0 +1,2 @@
+C:\Users\CastleBomber\Documents\GitHub\project-euler\c++\Largest-product-in-a-series\Debug\Largest-product-in-a-series.exe
+C:\Users\CastleBomber\Documents\GitHub\project-euler\c++\Largest-product-in-a-series\Debug\Largest-product-in-a-series.pdb
