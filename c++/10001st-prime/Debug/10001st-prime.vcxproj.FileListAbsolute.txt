@@ -1,2 +1,0 @@
-C:\Users\CastleBomber\Documents\GitHub\project-euler\c++\10001st-prime\Debug\10001st-prime.exe
-C:\Users\CastleBomber\Documents\GitHub\project-euler\c++\10001st-prime\Debug\10001st-prime.pdb
