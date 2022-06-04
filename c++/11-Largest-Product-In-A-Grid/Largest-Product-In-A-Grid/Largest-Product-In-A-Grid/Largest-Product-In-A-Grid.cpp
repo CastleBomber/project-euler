@@ -25,10 +25,10 @@
     20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
     01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48
 
-    The product of these numbers is 26 × 63 × 78 × 14 = 1788696.
+    The product of these numbers is 26 ï¿½ 63 ï¿½ 78 ï¿½ 14 = 1788696.
 
-    What is the greatest product of four adjacent numbers in the same direction 
-    (up, down, left, right, or diagonally) in the 20×20 grid?
+    What is the greatest product of four adjacent numbers in the same direction
+    (up, down, left, right, or diagonally) in the 20ï¿½20 grid?
 
 */
 #include <iostream>
@@ -36,6 +36,33 @@
 #include <stdio.h>
 
 using namespace std;
+
+class block {
+  private:
+
+
+  public:
+    int calcAbove(){
+
+    }
+
+} BLOCK;
+
+class horizonatal {
+
+}
+
+class vertival {
+
+}
+
+class diagonalRight {
+
+}
+
+class diagonalLeft {
+
+}
 
 int main()
 {
