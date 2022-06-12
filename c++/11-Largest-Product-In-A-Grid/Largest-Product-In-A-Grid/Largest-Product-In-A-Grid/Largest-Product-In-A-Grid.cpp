@@ -34,43 +34,50 @@
 #include <iostream>
 #include <vector>
 #include <stdio.h>
+#include <thread>
 
 using namespace std;
 
-class block {
+// base class
+class Block {
   private:
-
+      int a;
+      int b;
+      int c;
+      int d;
 
   public:
-    int calcAbove(){
-
-    }
+      virtual void getGreatestProduct() {};
 
 } BLOCK;
 
-class horizonatal {
+// derived class
+class Horizonatal : public Block {
+    public:
+        void getGreatestProduct() override {
+            cout << "good" << endl;
 
-}
+        }
+};
 
-class vertival {
+class Vertival : public Block {
 
-}
+};
 
-class diagonalRight {
+class diagonalRight : public Block {
 
-}
+};
 
-class diagonalLeft {
+class diagonalLeft : public Block{
 
-}
+};
 
 int main()
 {
-    int* arr = new int[400];
+    //int* gridNumbers = new int[400];
     int greatestProduct = 0;
+    thread t1();
 
-    for () {
-
-
-    }
+    Horizonatal horizontal;
+    horizontal.getGreatestProduct();
 }
