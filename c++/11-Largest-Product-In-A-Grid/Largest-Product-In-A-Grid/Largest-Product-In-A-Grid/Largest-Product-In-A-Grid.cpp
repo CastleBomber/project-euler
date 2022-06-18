@@ -74,7 +74,8 @@ class diagonalLeft : public Block{
 
 };
 
-void displayMatrix(vector<vector<int>> Matrix) {
+void displayMatrix(vector<vector<int>>& Matrix) {
+
     // display contents of matrix
     for (vector<int>& row : Matrix) {
 
@@ -87,13 +88,10 @@ void displayMatrix(vector<vector<int>> Matrix) {
     }
 }
 
-int main() {
+vector<vector<int>> getMatrixFromFile(vector<vector<int>>& Matrix, string file_name) {
 
-    int greatestProduct = 0;
     string line;
-    vector<vector<int>> matrix;
-
-    ifstream infile("Text.txt");
+    ifstream infile(file_name);
 
     while (!infile.eof()) {
 
@@ -109,12 +107,21 @@ int main() {
             row.push_back(stoi(token));
         }
 
-        matrix.push_back(row);
+        Matrix.push_back(row);
     }
 
-    //displayMatrix(matrix);
-
     infile.close();
+
+    return Matrix;
+}
+
+int main() {
+
+    int greatestProduct = 0;
+    string fileName = "Text.txt";
+    vector<vector<int>> matrix;
+
+    matrix = getMatrixFromFile(matrix, fileName);
 
     //Horizonatal horizontal;
     //horizontal.getGreatestProduct();
