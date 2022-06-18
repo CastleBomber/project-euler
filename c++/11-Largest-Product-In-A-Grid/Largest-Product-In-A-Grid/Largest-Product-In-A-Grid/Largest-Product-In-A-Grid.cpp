@@ -31,10 +31,13 @@
     (up, down, left, right, or diagonally) in the 20�20 grid?
 
 */
-#include <iostream>
-#include <vector>
 #include <stdio.h>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
 #include <thread>
+#include <regex>
 
 using namespace std;
 
@@ -55,7 +58,6 @@ class Block {
 class Horizonatal : public Block {
     public:
         void getGreatestProduct() override {
-            cout << "good" << endl;
 
         }
 };
@@ -72,12 +74,50 @@ class diagonalLeft : public Block{
 
 };
 
-int main()
-{
-    //int* gridNumbers = new int[400];
-    int greatestProduct = 0;
-    thread t1();
+void displayMatrix(vector<vector<int>> Matrix) {
+    // display contents of matrix
+    for (vector<int>& row : Matrix) {
 
-    Horizonatal horizontal;
-    horizontal.getGreatestProduct();
+        for (int& c : row) {
+
+            cout << c << ' ';
+        }
+
+        cout << '\n';
+    }
+}
+
+int main() {
+
+    int greatestProduct = 0;
+    string line;
+    vector<vector<int>> matrix;
+
+    ifstream infile("Text.txt");
+
+    while (!infile.eof()) {
+
+        regex re(" ");
+        vector<int> row;
+
+        getline(infile, line); // parse each line for numbers
+        sregex_token_iterator first{ line.begin(), line.end(), re, -1 }, last;
+        vector<string> tokens{ first, last };
+
+        for (auto token : tokens) { // turn str values to ints on row
+
+            row.push_back(stoi(token));
+        }
+
+        matrix.push_back(row);
+    }
+
+    //displayMatrix(matrix);
+
+    infile.close();
+
+    //Horizonatal horizontal;
+    //horizontal.getGreatestProduct();
+
+
 }
