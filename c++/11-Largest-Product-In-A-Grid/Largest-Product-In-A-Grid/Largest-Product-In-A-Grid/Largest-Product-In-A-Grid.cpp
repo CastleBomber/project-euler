@@ -45,6 +45,8 @@
 
 using namespace std;
 
+int greatestProduct = 0;
+
 /*
     base class
 */
@@ -64,27 +66,42 @@ class Block {
 /*
     derived classes
 
-    getGreatestProduct() - traverses down row, then column through matrix 
-                            with [a,b,c,d] block
-    
+    getGreatestProduct() - traverses down row, then column through matrix
+
         @param matrix - 20x20
 
-        @return greatestProduct - a * b * c * d
+        @return greatestProduct - a
 */
 class Horizonatal : public Block {
 
     public:
+        Horizonatal(int A, int B, int C, int D) {
+
+            a = A;
+            b = B;
+            c = C;
+            d = D;
+        }
+
         void getGreatestProduct(vector<vector<int>>& Matrix) override {
 
+            int product = 0;
             vector<vector<int>> matrix = Matrix;
 
             for (int i = 0; i < ROWS; i ++) {
-                
+
                 for (int j = 0; j < COLS - BLOCK_SIZE; j ++) {
 
+                    a = matrix[i][j];
+                    b = matrix[i][j + 1];
+                    c = matrix[i][j + 2];
+                    d = matrix[i][j + 3];
 
-                    if () {
+                    product = a * b * c * d;
 
+                    if (greatestProduct < product) {
+
+                        greatestProduct = product;
                     }
                 }
             }
@@ -93,14 +110,108 @@ class Horizonatal : public Block {
 
 class Vertival : public Block {
 
+    public:
+        Vertical(int A, int B, int C, int D) {
+
+            a = A;
+            b = B;
+            c = C;
+            d = D;
+        }
+
+        void getGreatestProduct(vector<vector<int>>& Matrix) override {
+
+            int product = 0;
+            vector<vector<int>> matrix = Matrix;
+
+            for (int i = 0; i < ROWS - BLOCK_SIZE; i ++) {
+
+                for (int j = 0; j < COLS; j ++) {
+
+                    a = matrix[i][j];
+                    b = matrix[i + 1][j];
+                    c = matrix[i + 2][j];
+                    d = matrix[i + 3][j];
+
+                    product = a * b * c * d;
+
+                    if (greatestProduct < product) {
+
+                        greatestProduct = product;
+                    }
+                }
+            }
+        }
 };
 
 class DiagonalRight : public Block {
+    public:
+        DiagonalRight(int A, int B, int C, int D) {
 
+            a = A;
+            b = B;
+            c = C;
+            d = D;
+        }
+
+        void getGreatestProduct(vector<vector<int>>& Matrix) override {
+
+            int product = 0;
+            vector<vector<int>> matrix = Matrix;
+
+            for (int i = 0; i < ROWS - BLOCK_SIZE; i ++) {
+
+                for (int j = 0; j < COLS - BLOCK_SIZE; j ++) {
+
+                    a = matrix[i][j];
+                    b = matrix[i + 1][j + 1];
+                    c = matrix[i + 2][j + 2];
+                    d = matrix[i + 3][j + 3];
+
+                    product = a * b * c * d;
+
+                    if (greatestProduct < product) {
+
+                        greatestProduct = product;
+                    }
+                }
+            }
+        }
 };
 
 class DiagonalLeft : public Block{
+    public:
+        DiagonalLeft(int A, int B, int C, int D) {
 
+            a = A;
+            b = B;
+            c = C;
+            d = D;
+        }
+
+        void getGreatestProduct(vector<vector<int>>& Matrix) override {
+
+            int product = 0;
+            vector<vector<int>> matrix = Matrix;
+
+            for (int i = ROWS - 1; i > 0 + BLOCK_SIZE; i--) {
+
+                for (int j = 0; j < COLS - BLOCK_SIZE; j++) {
+
+                    a = matrix[i][j];
+                    b = matrix[i - 1][j + 1];
+                    c = matrix[i - 2][j + 2];
+                    d = matrix[i - 3][j + 3];
+
+                    product = a * b * c * d;
+
+                    if (greatestProduct < product) {
+
+                        greatestProduct = product;
+                    }
+                }
+            }
+        }
 };
 
 void displayMatrix(vector<vector<int>>& Matrix) {
@@ -146,14 +257,22 @@ vector<vector<int>> getMatrixFromFile(vector<vector<int>>& Matrix, string file_n
 
 int main() {
 
-    int greatestProduct = 0;
     string fileName = "Text.txt";
     vector<vector<int>> matrix;
 
     matrix = getMatrixFromFile(matrix, fileName);
 
-    Horizonatal horizontal;
+    Horizonatal horizontal(0, 0, 0, 0);
     horizontal.getGreatestProduct(matrix);
 
+    Vertical vertical(0, 0, 0, 0);
+    vertical.getGreatestProduct(matrix);
 
+    DiagonalRight diagonalRight(0, 0, 0, 0);
+    diagonalRight.getGreatestProduct(matrix);
+
+    DiagonalLeft diagonalLeftt(0, 0, 0, 0);
+    diagonalLeft.getGreatestProduct(matrix);
+
+    cout << greatestProduct << endl;
 }
