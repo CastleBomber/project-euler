@@ -25,10 +25,12 @@
     20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
     01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48
 
-    The product of these numbers is 26 � 63 � 78 � 14 = 1788696.
+    The product of these numbers is 26 x 63 x 78 x 14 = 1788696.
 
     What is the greatest product of four adjacent numbers in the same direction
-    (up, down, left, right, or diagonally) in the 20�20 grid?
+    (up, down, left, right, or diagonally) in the 20x20 grid?
+
+    Answer: 70600674
 
 */
 #include <stdio.h>
@@ -52,7 +54,7 @@ int greatestProduct = 0;
 */
 class Block {
 
-  private:
+  protected:
       int a;
       int b;
       int c;
@@ -108,7 +110,7 @@ class Horizonatal : public Block {
         }
 };
 
-class Vertival : public Block {
+class Vertical : public Block {
 
     public:
         Vertical(int A, int B, int C, int D) {
@@ -145,6 +147,7 @@ class Vertival : public Block {
 };
 
 class DiagonalRight : public Block {
+    
     public:
         DiagonalRight(int A, int B, int C, int D) {
 
@@ -179,7 +182,8 @@ class DiagonalRight : public Block {
         }
 };
 
-class DiagonalLeft : public Block{
+class DiagonalLeft : public Block {
+    
     public:
         DiagonalLeft(int A, int B, int C, int D) {
 
@@ -271,7 +275,7 @@ int main() {
     DiagonalRight diagonalRight(0, 0, 0, 0);
     diagonalRight.getGreatestProduct(matrix);
 
-    DiagonalLeft diagonalLeftt(0, 0, 0, 0);
+    DiagonalLeft diagonalLeft(0, 0, 0, 0);
     diagonalLeft.getGreatestProduct(matrix);
 
     cout << greatestProduct << endl;
