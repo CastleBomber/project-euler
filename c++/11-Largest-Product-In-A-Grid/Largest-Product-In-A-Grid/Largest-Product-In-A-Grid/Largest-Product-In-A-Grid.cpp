@@ -39,10 +39,17 @@
 #include <thread>
 #include <regex>
 
+#define ROWS 20
+#define COLS 20
+#define BLOCK_SIZE 4
+
 using namespace std;
 
-// base class
+/*
+    base class
+*/
 class Block {
+
   private:
       int a;
       int b;
@@ -50,15 +57,37 @@ class Block {
       int d;
 
   public:
-      virtual void getGreatestProduct() {};
+      virtual void getGreatestProduct(vector<vector<int>>& Matrix) {};
 
 } BLOCK;
 
-// derived class
-class Horizonatal : public Block {
-    public:
-        void getGreatestProduct() override {
+/*
+    derived classes
 
+    getGreatestProduct() - traverses down row, then column through matrix 
+                            with [a,b,c,d] block
+    
+        @param matrix - 20x20
+
+        @return greatestProduct - a * b * c * d
+*/
+class Horizonatal : public Block {
+
+    public:
+        void getGreatestProduct(vector<vector<int>>& Matrix) override {
+
+            vector<vector<int>> matrix = Matrix;
+
+            for (int i = 0; i < ROWS; i ++) {
+                
+                for (int j = 0; j < COLS - BLOCK_SIZE; j ++) {
+
+
+                    if () {
+
+                    }
+                }
+            }
         }
 };
 
@@ -66,11 +95,11 @@ class Vertival : public Block {
 
 };
 
-class diagonalRight : public Block {
+class DiagonalRight : public Block {
 
 };
 
-class diagonalLeft : public Block{
+class DiagonalLeft : public Block{
 
 };
 
@@ -102,7 +131,7 @@ vector<vector<int>> getMatrixFromFile(vector<vector<int>>& Matrix, string file_n
         sregex_token_iterator first{ line.begin(), line.end(), re, -1 }, last;
         vector<string> tokens{ first, last };
 
-        for (auto token : tokens) { // turn str values to ints on row
+        for (auto token : tokens) { // turn str values to ints for row
 
             row.push_back(stoi(token));
         }
@@ -123,8 +152,8 @@ int main() {
 
     matrix = getMatrixFromFile(matrix, fileName);
 
-    //Horizonatal horizontal;
-    //horizontal.getGreatestProduct();
+    Horizonatal horizontal;
+    horizontal.getGreatestProduct(matrix);
 
 
 }
