@@ -10,6 +10,11 @@
 
     1, 3, 6, 10, 15, 21, 28, 36, 45, 55, ...
 
+    S(1) = 1
+    S(2) = 3 = 1 + 2
+    S(3) = 6 = 1 + 2 + 3
+    S(4) = 10 = ...
+
     Let us list the factors of the first seven triangle numbers:
 
      1: 1
@@ -35,7 +40,17 @@
 
 using namespace std;
 
+getTriangleNumbers();
+
+void getFactors() {
+
+}
+
 int main()
 {
-    cout << "Hello World!\n";
+    
+
+    getTriangleNumbers();
+    getFactors();
+    
 }
