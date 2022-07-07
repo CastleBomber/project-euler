@@ -37,26 +37,27 @@
 #include <vector>
 #include <regex>
 
+#define LARGE_NUMBER 5000000
+
 using namespace std;
 
-void getTriangleNumbers(vector<int>& triangleNumbers, int maximum) {
+void getTriangleNumbers(vector<int>& triangleNumbers, int minDivisors) {
 
 
 }
 
-void getFactors() {
+void getFactors(vector<int>& triangleNumbers) {
 
 
 }
 
 int main()
 {
-    int max;
-    int target = 500;
+    int minimumDivisors = 500;
     vector<int> triangleNums;
     vector<int> factors;
 
-    getTriangleNumbers(triangleNums, max);
-    getFactors();
+    getTriangleNumbers(triangleNums, LARGE_NUMBER);
+    getFactors(triangleNums);
 
 }
