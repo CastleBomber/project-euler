@@ -25,11 +25,11 @@
     21: 1,3,7,21
     28: 1,2,4,7,14,28
 
-    We can see that 28 is the first triangle number to have over five divisors.
+    We can see that 28 is the first triangle number to have over five divisors (aka 6)
 
-    What is the value of the first triangle number to have over five hundred divisors?
-
+    What is the first triangle number to have over five hundred divisors? (aka 501)
 */
+
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
@@ -37,27 +37,47 @@
 #include <vector>
 #include <regex>
 
-#define LARGE_NUMBER 5000000
-
 using namespace std;
 
-void getTriangleNumbers(vector<int>& triangleNumbers, int minDivisors) {
+
+/*
+    Triangle numbers:
+
+    1, 3, 6, 10, 15, 21, 28, 36, 45, 55, ...
+
+    S(1) = 1
+    S(2) = 3 = 1 + 2
+    S(3) = 6 = 1 + 2 + 3
+    S(4) = 10 = 1 + 2 + 3 + 4
+    S(5) = 15 = 1 + 2 + 3 + 4 + 5
+    ...
+*/
+void getTriangleNumbers(vector<int>& triangleNumbers, int largestPossible) {
+
+    while(largestPossible) {
+
+    }
+
+}
+
+void getNumberWithOverXFactors(vector<int>& triangleNumbers, int minDivisors) {
 
 
 }
 
-void getFactors(vector<int>& triangleNumbers) {
-
-
-}
-
+/*
+    triangleNums :      1, 3, 6, 10, 15, 21, 28 ...
+    factors      :  28: 1, 2, 4, 7, 14, 28
+    mysteryNumber:   ?: 1, x2, ..., x499, x500, ..., ?
+*/
 int main()
 {
-    int minimumDivisors = 500;
     vector<int> triangleNums;
-    vector<int> factors;
+    int minimumDivisors = 500;
+    int largestPossibleTriangleNumber = 50000000;
 
-    getTriangleNumbers(triangleNums, LARGE_NUMBER);
-    getFactors(triangleNums);
+    getTriangleNumbers(triangleNums, largestPossibleTriangleNumber);
+    getNumberWithOverXFactors(triangleNums, minimumDivisors);
+
 
 }
