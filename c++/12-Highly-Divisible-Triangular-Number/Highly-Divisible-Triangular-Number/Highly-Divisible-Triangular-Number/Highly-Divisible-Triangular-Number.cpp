@@ -27,7 +27,7 @@
 
     We can see that 28 is the first triangle number to have over five divisors (aka 6)
 
-    What is the first triangle number to have over five hundred divisors? (aka 501)
+    What is the first triangle number to have over five hundred divisors? (aka 501+)
 */
 
 #include <stdio.h>
@@ -54,14 +54,24 @@ using namespace std;
 */
 void getTriangleNumbers(vector<int>& triangleNumbers, int largestPossible) {
 
-    while(largestPossible) {
+    int base = 1;
+    int sum = 1;
 
+    while(sum < largestPossible) {
+
+        triangleNumbers.push_back(sum);
+        base++;
+        sum += base;
     }
-
 }
 
-void getNumberWithOverXFactors(vector<int>& triangleNumbers, int minDivisors) {
+/*
 
+*/
+void getNumberWithOverXFactors(vector<int>& triangleNumbers, int minDivisors) {
+}
+
+void checkHowManyFactors(vector<int>& triangleNumbers) {
 
 }
 
@@ -77,7 +87,6 @@ int main()
     int largestPossibleTriangleNumber = 100000000;
 
     getTriangleNumbers(triangleNums, largestPossibleTriangleNumber);
-    getNumberWithOverXFactors(triangleNums, minimumDivisors);
-
-
+    checkHowManyFactors(triangleNumbers.end());
+    //getNumberWithOverXFactors(triangleNums, minimumDivisors);
 }
