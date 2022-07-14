@@ -74,7 +74,7 @@ int main()
 {
     vector<int> triangleNums;
     int minimumDivisors = 500;
-    int largestPossibleTriangleNumber = 50000000;
+    int largestPossibleTriangleNumber = 100000000;
 
     getTriangleNumbers(triangleNums, largestPossibleTriangleNumber);
     getNumberWithOverXFactors(triangleNums, minimumDivisors);
