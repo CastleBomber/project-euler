@@ -73,6 +73,9 @@ void getNumberWithOverXFactors(vector<int>& triangleNumbers, int minDivisors) {
 
 void checkHowManyFactors(vector<int>& triangleNumbers) {
 
+
+
+
 }
 
 /*
