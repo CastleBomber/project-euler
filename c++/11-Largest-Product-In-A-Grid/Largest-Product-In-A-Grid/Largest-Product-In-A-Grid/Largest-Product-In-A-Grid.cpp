@@ -147,7 +147,7 @@ class Vertical : public Block {
 };
 
 class DiagonalRight : public Block {
-    
+
     public:
         DiagonalRight(int A, int B, int C, int D) {
 
@@ -183,7 +183,7 @@ class DiagonalRight : public Block {
 };
 
 class DiagonalLeft : public Block {
-    
+
     public:
         DiagonalLeft(int A, int B, int C, int D) {
 

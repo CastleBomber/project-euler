@@ -39,6 +39,16 @@
 
 using namespace std;
 
+class Triangle{
+
+    protected:
+        int number;
+        vector<int> factors;
+
+    public:
+
+};
+
 
 /*
     Triangle numbers:
@@ -52,7 +62,7 @@ using namespace std;
     S(5) = 15 = 1 + 2 + 3 + 4 + 5
     ...
 */
-void getTriangleNumbers(vector<int>& triangleNumbers, int largestPossible) {
+void getTriangleNumbers(vector<int>& triangleNums, int largestPossible) {
 
     int base = 1;
     int sum = 1;
@@ -65,13 +75,7 @@ void getTriangleNumbers(vector<int>& triangleNumbers, int largestPossible) {
     }
 }
 
-/*
-
-*/
-void getNumberWithOverXFactors(vector<int>& triangleNumbers, int minDivisors) {
-}
-
-void checkHowManyFactors(vector<int>& triangleNumbers) {
+vector<vector<int>> getNumberOfFactors(vector<int>& triangleNumbers) {
 
 
 
@@ -81,15 +85,22 @@ void checkHowManyFactors(vector<int>& triangleNumbers) {
 /*
     triangleNums :      1, 3, 6, 10, 15, 21, 28 ...
     factors      :  28: 1, 2, 4, 7, 14, 28
-    mysteryNumber:   ?: 1, x2, ..., x499, x500, ..., ?
+    mysteryNumber:   ?: 1, xf2, ..., xf499, xf500, ..., ?
 */
 int main()
 {
-    vector<int> triangleNums;
     int minimumDivisors = 500;
-    int largestPossibleTriangleNumber = 100000000;
+    int largestPossibleTriangleNumber = 100000000; // helps build vector
+    vector<int> triangleNumbers;
+    vector<vector<int>> trianglesAndFactors;
 
-    getTriangleNumbers(triangleNums, largestPossibleTriangleNumber);
-    checkHowManyFactors(triangleNums.end());
-    //getNumberWithOverXFactors(triangleNums, minimumDivisors);
+    getTriangleNumbers(triangleNumsbers, largestPossibleTriangleNumber);
+    trianglesAndFactors = getNumberOfFactors(triangleNumbers);
+
+    Triangle t;
+    createTriangles();
+
+    for( int i = 0; i < trianglesAndFactors.size(); i++) {
+        cout << trianglesAndFactors[0] << "   " << trianglesAndFactors[1] << endl;
+    }
 }
