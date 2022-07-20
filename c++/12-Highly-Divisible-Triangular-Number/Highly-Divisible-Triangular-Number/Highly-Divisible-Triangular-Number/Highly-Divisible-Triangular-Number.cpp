@@ -90,6 +90,6 @@ int main()
     int largestPossibleTriangleNumber = 100000000;
 
     getTriangleNumbers(triangleNums, largestPossibleTriangleNumber);
-    checkHowManyFactors(triangleNumbers.end());
+    checkHowManyFactors(triangleNums.end());
     //getNumberWithOverXFactors(triangleNums, minimumDivisors);
 }
