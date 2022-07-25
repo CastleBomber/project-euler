@@ -39,6 +39,9 @@
 
 using namespace std;
 
+/*
+    This class stores information for each triangle number
+*/
 class Triangle{
 
     protected:
@@ -64,7 +67,7 @@ class Triangle{
     S(5) = 15 = 1 + 2 + 3 + 4 + 5
     ...
 */
-void getTriangleNumbers(vector<int>& triangleNums, int largestPossible) {
+vector<int> getTriangleNumbers(int largestPossible) {
 
     int base = 1;
     int sum = 1;
@@ -77,13 +80,6 @@ void getTriangleNumbers(vector<int>& triangleNums, int largestPossible) {
     }
 }
 
-vector<vector<int>> getNumberOfFactors(vector<int>& triangleNumbers) {
-
-
-
-
-}
-
 /*
     triangleNums :      1, 3, 6, 10, 15, 21, 28 ...
     factors      :  28: 1, 2, 4, 7, 14, 28
@@ -91,18 +87,18 @@ vector<vector<int>> getNumberOfFactors(vector<int>& triangleNumbers) {
 */
 int main()
 {
-    int minimumDivisors = 500;
-    int largestPossibleTriangleNumber = 100000000; // helps build vector
+    int minimumDivisorsRequested = 500;
+    int largestPossible = 100000000;
     vector<int> triangleNumbers;
-    vector<vector<int>> trianglesAndFactors;
+    vector<Triangle> triangles;
 
-    getTriangleNumbers(triangleNumbers, largestPossibleTriangleNumber);
-    trianglesAndFactors = getNumberOfFactors(triangleNumbers);
+    triangleNumbers = getTriangleNumbers(largestPossible);
 
-    Triangle t;
-    t.createTriangles();
+    for(int i = 0; i < triangleNumbers.size(); i++) {
 
-    for( int i = 0; i < trianglesAndFactors.size(); i++) {
-        cout << trianglesAndFactors[0] << "   " << trianglesAndFactors[1] << endl;
+        Triangle t;
+        t.number = triangleNumbers[i];
+        t.factors = getFactors();
+        triangles.push_back(t);
     }
 }
