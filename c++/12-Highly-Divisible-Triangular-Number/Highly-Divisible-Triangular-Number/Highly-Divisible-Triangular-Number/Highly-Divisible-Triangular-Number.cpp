@@ -46,7 +46,9 @@ class Triangle{
         vector<int> factors;
 
     public:
+        void createTriangles() {
 
+        }
 };
 
 
@@ -69,7 +71,7 @@ void getTriangleNumbers(vector<int>& triangleNums, int largestPossible) {
 
     while(sum < largestPossible) {
 
-        triangleNumbers.push_back(sum);
+        triangleNums.push_back(sum);
         base++;
         sum += base;
     }
@@ -94,11 +96,11 @@ int main()
     vector<int> triangleNumbers;
     vector<vector<int>> trianglesAndFactors;
 
-    getTriangleNumbers(triangleNumsbers, largestPossibleTriangleNumber);
+    getTriangleNumbers(triangleNumbers, largestPossibleTriangleNumber);
     trianglesAndFactors = getNumberOfFactors(triangleNumbers);
 
     Triangle t;
-    createTriangles();
+    t.createTriangles();
 
     for( int i = 0; i < trianglesAndFactors.size(); i++) {
         cout << trianglesAndFactors[0] << "   " << trianglesAndFactors[1] << endl;
