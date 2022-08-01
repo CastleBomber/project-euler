@@ -49,8 +49,10 @@ class Triangle{
         vector<int> factors;
 
     public:
-        void createTriangles() {
-
+        Triangle(int triangleNumber, vector<int>& _factors) {
+            
+            number = triangleNumber;
+            factors = _factors;
         }
 };
 
@@ -71,6 +73,7 @@ vector<int> getTriangleNumbers(int largestPossible) {
 
     int base = 1;
     int sum = 1;
+    vector<int> triangleNums;
 
     while(sum < largestPossible) {
 
@@ -78,6 +81,25 @@ vector<int> getTriangleNumbers(int largestPossible) {
         base++;
         sum += base;
     }
+
+    return triangleNums;
+}
+
+/*
+
+
+
+*/
+vector<int> getFactors(int number) {
+
+    vector<int> factors;
+
+    for (int i = 0; i < number; i++) {
+
+
+    }
+
+    return factors;
 }
 
 /*
@@ -89,16 +111,26 @@ int main()
 {
     int minimumDivisorsRequested = 500;
     int largestPossible = 100000000;
+    int triangleNum = 1;
+    vector<int> factors;
     vector<int> triangleNumbers;
-    vector<Triangle> triangles;
+    vector<Triangle> triangleObjects;
 
     triangleNumbers = getTriangleNumbers(largestPossible);
 
     for(int i = 0; i < triangleNumbers.size(); i++) {
 
-        Triangle t;
-        t.number = triangleNumbers[i];
-        t.factors = getFactors();
-        triangles.push_back(t);
+        triangleNum = triangleNumbers[i];
+        factors = getFactors(triangleNumbers[i]);
+
+        if (factors.size() >= minimumDivisorsRequested) {
+
+            Triangle t(triangleNum, factors);
+            triangleObjects.push_back(t);
+        }
+    }
+
+    for (auto &t : triangleObjects) {
+        //cout <<  << endl;
     }
 }
