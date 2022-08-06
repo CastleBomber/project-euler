@@ -50,7 +50,7 @@ class Triangle{
 
     public:
         Triangle(int triangleNumber, vector<int>& _factors) {
-            
+
             number = triangleNumber;
             factors = _factors;
         }
@@ -86,18 +86,18 @@ vector<int> getTriangleNumbers(int largestPossible) {
 }
 
 /*
-
-
-
+    Given a number, we return all the corresponding _factors
+    Ex: 6: 1, 2, 3, 6
 */
 vector<int> getFactors(int number) {
 
     vector<int> factors;
 
-    for (int i = 0; i < number; i++) {
+    for (int i = 0; i <= number; i++) {
 
         if ((number % i) == 0) {
 
+            factors.push_back(i);
         }
 
     }
@@ -119,22 +119,23 @@ int main()
     vector<int> triangleNumbers;
     vector<Triangle> triangleObjects;
 
+    // load up on triangle numbers
     triangleNumbers = getTriangleNumbers(largestPossible);
 
+    // get factors for our triangle numbers, if good amount of factors, make into Triangle object
     for(int i = 0; i < triangleNumbers.size(); i++) {
 
-        triangleNum = triangleNumbers[i];
         factors = getFactors(triangleNumbers[i]);
 
         if (factors.size() >= minimumDivisorsRequested) {
 
-            Triangle t(triangleNum, factors);
+            Triangle t(triangleNumbers[i], factors);
             triangleObjects.push_back(t);
         }
     }
 
     for (auto &t : triangleObjects) {
 
-        //cout <<  << endl;
+        cout <<  t.number << " and " << t.factors.size() << endl;
     }
 }
