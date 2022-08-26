@@ -44,11 +44,10 @@ using namespace std;
 */
 class Triangle{
 
-    protected:
+    public:
         int number;
         vector<int> factors;
 
-    public:
         Triangle(int triangleNumber, vector<int>& _factors) {
 
             number = triangleNumber;
@@ -93,7 +92,7 @@ vector<int> getFactors(int number) {
 
     vector<int> factors;
 
-    for (int i = 0; i <= number; i++) {
+    for (int i = 1; i <= number; i++) {
 
         if ((number % i) == 0) {
 
@@ -112,8 +111,8 @@ vector<int> getFactors(int number) {
 */
 int main()
 {
-    int minimumDivisorsRequested = 500;
-    int largestPossible = 100000000;
+    int minimumDivisorsRequested = 100;
+    int largestPossible = 21474836;
     int triangleNum = 1;
     vector<int> factors;
     vector<int> triangleNumbers;
@@ -122,7 +121,8 @@ int main()
     // load up on triangle numbers
     triangleNumbers = getTriangleNumbers(largestPossible);
 
-    // get factors for our triangle numbers, if good amount of factors, make into Triangle object
+    // get factors for our triangle numbers
+    // if good amount of factors: make into Triangle object
     for(int i = 0; i < triangleNumbers.size(); i++) {
 
         factors = getFactors(triangleNumbers[i]);
@@ -133,9 +133,10 @@ int main()
             triangleObjects.push_back(t);
         }
     }
+ 
+    // Display mystery triangle number
+    for (auto& t : triangleObjects) {
 
-    for (auto &t : triangleObjects) {
-
-        cout <<  t.number << " and " << t.factors.size() << endl;
+        cout << t.number << " with # of factors: " << t.factors.size() << '\n';
     }
 }
