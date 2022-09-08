@@ -86,6 +86,7 @@ vector<int> getTriangleNumbers(int largestPossible) {
 
 /*
     Given a number, we return all the corresponding _factors
+
     Ex: 6: 1, 2, 3, 6
 */
 vector<int> getFactors(int number) {
@@ -108,11 +109,13 @@ vector<int> getFactors(int number) {
     triangleNums :      1, 3, 6, 10, 15, 21, 28 ...
     factors      :  28: 1, 2, 4, 7, 14, 28
     mysteryNumber:   ?: 1, xf2, ..., xf499, xf500, ..., ?
+
+    answer: 76576500 with 576
 */
 int main()
 {
-    int minimumDivisorsRequested = 100;
-    int largestPossible = 21474836;
+    int minimumDivisorsRequested = 500;
+    int largestPossible = 141474836;
     int triangleNum = 1;
     vector<int> factors;
     vector<int> triangleNumbers;
