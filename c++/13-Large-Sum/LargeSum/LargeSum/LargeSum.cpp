@@ -1,6 +1,6 @@
 /*
     Author: CBOMBS
-    Date: June 20th, 2022
+    Date: September 7th, 2022
 
     Project Euler: #13 - Large Sum
 
