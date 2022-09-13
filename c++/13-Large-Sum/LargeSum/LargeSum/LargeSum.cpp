@@ -22,4 +22,16 @@ using namespace std;
 int main()
 {
 
+    // get Numbers.txt
+    ofstream textFile;
+
+    textFile.open("Number.txt");
+
+    while (!inStream.EOF()) {
+
+        cin >> endl;
+    }
+    // manipulate data
+    // return data
+
 }
