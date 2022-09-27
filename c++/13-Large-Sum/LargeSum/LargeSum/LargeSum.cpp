@@ -21,17 +21,17 @@ using namespace std;
 */
 int main()
 {
+    ifstream infile("Number.txt"); // read input from file
+    string line;
+    vector<string> numbers; // will store file's numbers as strings
 
-    // get Numbers.txt
-    ofstream textFile;
-
-    textFile.open("Number.txt");
-
+    // go through file and push numbers to vector
     while (!inStream.EOF()) {
 
-        cin >> endl;
+        getline(infile, lineß);
+        numbers.push_back(line);
     }
+
     // manipulate data
     // return data
-
 }
