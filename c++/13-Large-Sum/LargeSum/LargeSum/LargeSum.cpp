@@ -18,6 +18,11 @@
 
 using namespace std;
 
+/*
+    Adds two very large numbers given as strings
+
+    *Tutorial's Point's function
+*/
 string addBigNumbers(string number1, string number2) {
 
     if (number1.length() >  number2.length()) {
@@ -26,7 +31,7 @@ string addBigNumbers(string number1, string number2) {
     }
 
     string sum = "";
-    int len1 = numer1.length();
+    int len1 = number1.length();
     int len2 = number2.length();
     int digitDiff = len2 - len1;
     int carry = 0;
@@ -67,14 +72,12 @@ int main()
     int sum = 0;
 
     // go through file and push numbers to vector
-    while (!inStream.EOF()) {
+    while (!infile.eof()) {
 
         getline(infile, line);
         numbers.push_back(line);
-        getline(infile, line);
-        numbers.push_back(line);
 
-        addBigNumbers(number[1], numbers[2]);
+        addBigNumbers("", "");
     }
 
     // for (auto num : numbers) {
