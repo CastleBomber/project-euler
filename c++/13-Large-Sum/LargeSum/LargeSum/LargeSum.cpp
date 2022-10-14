@@ -21,7 +21,7 @@ using namespace std;
 /*
     Adds two very large numbers given as strings
 
-    *Tutorial's Point's function
+    Source: Tutorial's Point's function
 */
 string addBigNumbers(string number1, string number2) {
 
@@ -68,23 +68,23 @@ int main()
 {
     ifstream infile("Number.txt"); // read input from file
     string line;
-    vector<string> numbers; // will store file's numbers as strings
-    int sum = 0;
+    vector<string> numbers; // stores the file's numbers as strings
+    string sum = 0;
 
-    // go through file and push numbers to vector
+    // go through file and load up numbers
     while (!infile.eof()) {
 
         getline(infile, line);
         numbers.push_back(line);
-
-        addBigNumbers("", "");
     }
 
-    // for (auto num : numbers) {
-    //
-    //
-    // }
+    // add up all the numbers from numbers
+    for (int x = 0; x < numbers.size(); x++) {
 
+        sum = addBigNumbers(sum, numbers[x]);
+    }
+
+    cout << sum << endl;
 
     return 0;
 }
