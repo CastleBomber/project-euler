@@ -69,7 +69,7 @@ int main()
     ifstream infile("Number.txt"); // read input from file
     string line;
     vector<string> numbers; // stores the file's numbers as strings
-    string sum = 0;
+    string sum = "0";
 
     // go through file and load up numbers
     while (!infile.eof()) {
