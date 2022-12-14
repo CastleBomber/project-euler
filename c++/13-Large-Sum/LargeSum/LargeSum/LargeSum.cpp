@@ -66,7 +66,7 @@ string addBigNumbers(string number1, string number2) {
 */
 int main()
 {
-    ifstream infile("Number.txt"); // read input from file
+    ifstream infile("Numbers.txt"); // read input from file
     string line;
     vector<string> numbers; // stores the file's numbers as strings
     string sum = "0";
@@ -83,6 +83,12 @@ int main()
 
         sum = addBigNumbers(sum, numbers[x]);
     }
+
+
+    // need to account for very large string
+
+
+
 
     cout << sum << endl;
 
