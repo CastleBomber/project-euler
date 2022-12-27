@@ -7,6 +7,8 @@
     Acknowledgement: Tutorial's Point Sum of Two Large Numbers in C++
 
     Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.
+
+    Sum: 5537376230390876637302048746832985971773659831892672
 */
 
 #include <stdio.h>
@@ -83,12 +85,6 @@ int main()
 
         sum = addBigNumbers(sum, numbers[x]);
     }
-
-
-    // need to account for very large string
-
-
-
 
     cout << sum << endl;
 
