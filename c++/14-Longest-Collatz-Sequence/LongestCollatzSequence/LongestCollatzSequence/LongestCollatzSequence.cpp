@@ -17,32 +17,78 @@
     Although it has not been proved yet (Collatz Problem), it is thought that all starting numbers finish at 1.
 
     Which starting number, under one million, produces the longest chain?
+
+    Shortcuts:
+        c++ VS Code clang-formatter: shift+alt+f
 */
 
 #include <iostream>
 
-int collatzSequence(int number){
+/**
+ *  Increases odd numbers and decreases even numbers
+ *  with the goal of finishing at 1
+ *
+ *  returns
+ *      count - number of terms and steps to reach 1
+ */
+int collatzSequence(int startingNumber)
+{
+    int finalNumber = startingNumber; // decrements through sequence and reaches 1
+    int count = 0;                    // number of steps to reach 1
 
-  int count = 0;
+    // Loops and updates the starting number until 1 is reached
+    while ((finalNumber != 1))
+    {
+        if (isOdd(finalNumber))
+        {
+            // Increase odd number and makes it even
+            finalNumber = (3 * finalNumber) + 1;
+        }
+        else
+        {
+            // Decreases even number and makes it odd || even
+            finalNumber = finalNumber / 2;
+        }
 
-  while ((startingNumber != 1) || (startingNumber != 2)) {
-      if(isOdd){
-          n1 = (3*startingNumber) + 1;
-      } else {
-          n2 = startingNumber/2;
-      }
-      count++;
-  }
+        count++;
+    }
 
-  return count;
+    return count;
+}
+
+int isOdd(int number)
+{
+    int status = 0;
+
+    if ((number % 2) > 0)
+    {
+        status = 1;
+    }
+
+    return status;
 }
 
 int main()
 {
-    int startingNumber = 13;
-    int steps = 0; // steps to turn startingNumber to 1
+    int starting = 1;
+    int maximum = 1000000;
+    int steps = 0;        // steps for the current number to reach 1
+    int producer = 0;     // produces the longest chain in the iterative sequence
+    int longestChain = 0; // stores the highest value of steps from producer
 
-    steps = collatzSequence(startingNumber);
+    while (starting != maximum)
+    {
+        steps = collatzSequence(starting);
 
-    std::cout << "Number of steps: " << steps << "\n";
+        if (longestChain < steps)
+        {
+            longestChain = steps;
+            producer = starting;
+        }
+
+        starting++;
+    }
+
+    std::cout << "The number: " << producer
+              << "produces the longest chain of: " << longestChain << "\n";
 }
