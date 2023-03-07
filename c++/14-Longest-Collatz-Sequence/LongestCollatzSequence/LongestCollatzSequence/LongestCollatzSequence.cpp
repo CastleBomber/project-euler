@@ -18,23 +18,36 @@
 
     Which starting number, under one million, produces the longest chain?
 
+    Examples:
+    1 - returns 1 becuase its the number of terms in the sequence
+    2 - return 2
+
     Shortcuts:
         c++ VS Code clang-formatter: shift+alt+f
 */
 
 #include <iostream>
 
+int isOdd(int number);
+
 /**
  *  Increases odd numbers and decreases even numbers
  *  with the goal of finishing at 1
  *
  *  returns
- *      count - number of terms and steps to reach 1
+ *      count - number of terms and numTerms to reach 1
  */
 int collatzSequence(int startingNumber)
 {
-    int finalNumber = startingNumber; // decrements through sequence and reaches 1
-    int count = 0;                    // number of steps to reach 1
+    int finalNumber = startingNumber; // decrements through sequence until reaches 1
+    int count = 1;                    // number of numTerms to reach 1
+
+    if (startingNumber < 1)
+    {
+        printf("Error: value should not be less than 1\n");
+
+        return 0;
+    }
 
     // Loops and updates the starting number until 1 is reached
     while ((finalNumber != 1))
@@ -70,19 +83,19 @@ int isOdd(int number)
 
 int main()
 {
-    int starting = 1;
-    int maximum = 1000000;
-    int steps = 0;        // steps for the current number to reach 1
-    int producer = 0;     // produces the longest chain in the iterative sequence
-    int longestChain = 0; // stores the highest value of steps from producer
+    int starting = 1;          // checks for which number gives the largest sequence
+    int maximum = 1000000;     // largest number to check
+    int numTerms = 0;          // number of terms to cascade down to 1
+    int producer = 0;          // produces the longest chain in the sequence
+    int greatestTermCount = 0; // stores the highest value of numTerms from producer
 
     while (starting != maximum)
     {
-        steps = collatzSequence(starting);
+        numTerms = collatzSequence(starting);
 
-        if (longestChain < steps)
+        if (greatestTermCount < numTerms)
         {
-            longestChain = steps;
+            greatestTermCount = numTerms;
             producer = starting;
         }
 
@@ -90,5 +103,5 @@ int main()
     }
 
     std::cout << "The number: " << producer
-              << "produces the longest chain of: " << longestChain << "\n";
+              << " produces the longest chain with: " << greatestTermCount << " terms\n";
 }
