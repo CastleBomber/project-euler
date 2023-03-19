@@ -104,6 +104,12 @@ int tabulization(int number)
 
     for ()
     {
+        // Performance boost, exits if assumes no entry for number
+        if( < it.end())
+        {
+
+        }
+
         if ()
         {
             table.emplace(x, y);
