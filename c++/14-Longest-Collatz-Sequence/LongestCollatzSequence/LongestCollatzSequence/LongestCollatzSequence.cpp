@@ -36,6 +36,10 @@
 
 #include <iostream>
 #include <map>
+#include <string>
+#include <string_view>
+
+using namespace std;
 
 int collatzSequence(map<int, int> t, int startingNumber);
 int tabulization(map<int, int> t, int number);
@@ -98,20 +102,22 @@ int collatzSequence(map<int, int> t, int startingNumber)
  * table.emplace() - make them a pair and add to map
  *
  */
-int tabulization(map<int, int> t, int number)
+int tabulization(map<int, int> &t, int number)
 {
+    map<int, int> table = t;
     int sequenceLength = 0;
 
-    for (auto const &[key, val] : table)
+    for (auto& item : table)
     {
         // Performance boost, exits if assumes no entry for number
         if (it.begin() < it.end())
         {
+            cout << key << value << endl;
         }
 
-        if ()
+        if (i < 0)
         {
-            table.emplace(x, y);
+            table.emplace(key, val);
             sequenceLength = 1;
         }
     }
