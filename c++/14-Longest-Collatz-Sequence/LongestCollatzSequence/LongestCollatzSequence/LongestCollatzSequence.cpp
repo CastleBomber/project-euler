@@ -41,22 +41,26 @@
 
 using namespace std;
 
-int collatzSequence(map<int, int> t, int startingNumber);
-int tabulization(map<int, int> t, int number);
+int collatzSequence(map<int, int> table, int startingNumber);
+int getTabulization(map<int, int> table, int number);
+int setTabulization(map<int, int> table, int key, int value);
 int isOdd(int number);
 
 /**
  *  Increases odd numbers and decreases even numbers
  *  with the goal of finishing at 1
  *
+ * Mimimum acceptable value is 1. All lower numbers will be returned as an error.
+ * For this reason, we set: sequenceCount = 1
+ *
  *  returns
- *      count - number of terms to reach 1, includes starting number
+ *      sequenceCount - number of terms to reach 1, includes starting number
  */
-int collatzSequence(map<int, int> t, int startingNumber)
+int collatzSequence(map<int, int> &table, int startingNumber)
 {
+    map<int, int> collatzTable = table;
     int finalNumber = startingNumber; // decrements through sequence until reaches 1
-    int count = 1;                    // number of numTerms to reach 1
-    int sequenceLength = 0;
+    int sequenceCount = 1;            // number of terms for given number to reach 1
 
     // Error Check
     if (startingNumber < 1)
@@ -66,10 +70,14 @@ int collatzSequence(map<int, int> t, int startingNumber)
         return 0;
     }
 
-    // Loops and updates the starting number until 1 is reached
+    // Loops and updates given number until its value is 1
     while ((finalNumber != 1))
     {
-        sequenceLength = tabulization(finalNumber);
+        // Check if number already in the table
+        if (sequenceCount = getTabulization(collatzTable, finalNumber))
+        {
+            return sequenceCount;
+        }
 
         if (isOdd(finalNumber))
         {
@@ -82,10 +90,12 @@ int collatzSequence(map<int, int> t, int startingNumber)
             finalNumber = finalNumber / 2;
         }
 
-        count++;
+        sequenceCount++;
     }
 
-    return count;
+    collatzTable = setTabulization(collatzTable, startindNumber, sequenceCount);
+
+    return sequenceCount;
 }
 
 /**
@@ -102,27 +112,26 @@ int collatzSequence(map<int, int> t, int startingNumber)
  * table.emplace() - make them a pair and add to map
  *
  */
-int tabulization(map<int, int> &t, int number)
+int getTabulization(map<int, int> &table, int number)
 {
-    map<int, int> table = t;
+    map<int, int> tableCheck = table;
     int sequenceLength = 0;
 
-    for (auto& item : table)
+    for (auto &item : tableCheck)
     {
-        // Performance boost, exits if assumes no entry for number
-        if (it.begin() < it.end())
+        if (item.value < 0)
         {
-            cout << key << value << endl;
-        }
-
-        if (i < 0)
-        {
-            table.emplace(key, val);
-            sequenceLength = 1;
+            tableCheck.emplace(key, val);
+            sequenceLength += 1;
         }
     }
 
     return sequenceLength;
+}
+
+int setTabulization(map<int, int> table, int key, int value)
+{
+    map<int, int> tableSet = table;
 }
 
 int isOdd(int number)
@@ -159,6 +168,6 @@ int main()
         starting++;
     }
 
-    std::cout << "The number: " << producer
-              << " produces the longest chain with: " << greatestTermCount << " terms\n";
+    cout << "The number: " << producer
+         << " produces the longest chain with: " << greatestTermCount << " terms\n";
 }
