@@ -42,7 +42,7 @@
 using namespace std;
 
 int collatzSequence(map<int, int> table, int startingNumber);
-int getTabulization(map<int, int> table, int number);
+int checkTabulization(map<int, int> table, int number);
 int setTabulization(map<int, int> table, int key, int value);
 int isOdd(int number);
 
@@ -74,7 +74,7 @@ int collatzSequence(map<int, int> &table, int startingNumber)
     while ((finalNumber != 1))
     {
         // Check if number already in the table
-        if (sequenceCount = getTabulization(collatzTable, finalNumber))
+        if (sequenceCount = checkTabulization(collatzTable, finalNumber))
         {
             return sequenceCount;
         }
@@ -93,13 +93,15 @@ int collatzSequence(map<int, int> &table, int startingNumber)
         sequenceCount++;
     }
 
-    collatzTable = setTabulization(collatzTable, startindNumber, sequenceCount);
+    collatzTable.emplace(startingNumber, sequenceCount); // Add to table
 
     return sequenceCount;
 }
 
 /**
  * Checks if number is in the table
+ *
+ * If the given number is not in the table, return 0
  *
  * tabulization - top-down dynamic approach,
  * uses extra memory to store solutions to sub problems
@@ -112,26 +114,20 @@ int collatzSequence(map<int, int> &table, int startingNumber)
  * table.emplace() - make them a pair and add to map
  *
  */
-int getTabulization(map<int, int> &table, int number)
+int checkTabulization(map<int, int> &table, int number)
 {
     map<int, int> tableCheck = table;
     int sequenceLength = 0;
 
     for (auto &item : tableCheck)
     {
-        if (item.value < 0)
+        if (number == item.key)
         {
-            tableCheck.emplace(key, val);
-            sequenceLength += 1;
+            return item.value;
         }
     }
 
     return sequenceLength;
-}
-
-int setTabulization(map<int, int> table, int key, int value)
-{
-    map<int, int> tableSet = table;
 }
 
 int isOdd(int number)
@@ -148,26 +144,26 @@ int isOdd(int number)
 
 int main()
 {
-    int starting = 1;          // checks for which number gives the largest sequence
-    int maximum = 1000000;     // largest number to check
-    int numTerms = 0;          // number of terms to cascade down to 1
-    int producer = 0;          // produces the longest chain in the sequence
-    int greatestTermCount = 0; // stores the highest value of numTerms from producer
-    map<int, int> table;       // stores LCS values of numbers
+    int currentTerm = 1;          // checks for which number gives the largest sequence
+    int maxTerm = 1000000;        // largest number to check
+    int numTerms = 0;             // number of terms to cascade down to 1
+    int longestChainProducer = 0; // produces the longest chain in the sequence
+    int longestChainCount = 0;    // stores the highest value of numTerms from longestChainProducer
+    map<int, int> table;          // stores LCS values of numbers
 
-    while (starting != maximum)
+    while (currentTerm != maxTerm)
     {
-        numTerms = collatzSequence(table, starting);
+        numTerms = collatzSequence(table, currentTerm);
 
-        if (greatestTermCount < numTerms)
+        if (longestChainCount < numTerms)
         {
-            greatestTermCount = numTerms;
-            producer = starting;
+            longestChainCount = numTerms;
+            longestChainProducer = currentTerm;
         }
 
-        starting++;
+        currentTerm++;
     }
 
-    cout << "The number: " << producer
-         << " produces the longest chain with: " << greatestTermCount << " terms\n";
+    cout << "The number: " << longestChainProducer
+         << " produces the longest chain with: " << longestChainCount << " terms\n";
 }
