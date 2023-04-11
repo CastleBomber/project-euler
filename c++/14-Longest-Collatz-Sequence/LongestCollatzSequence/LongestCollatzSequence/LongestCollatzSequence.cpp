@@ -43,7 +43,6 @@ using namespace std;
 
 int collatzSequence(map<int, int> table, int startingNumber);
 int checkTabulization(map<int, int> table, int number);
-int setTabulization(map<int, int> table, int key, int value);
 int isOdd(int number);
 
 /**
