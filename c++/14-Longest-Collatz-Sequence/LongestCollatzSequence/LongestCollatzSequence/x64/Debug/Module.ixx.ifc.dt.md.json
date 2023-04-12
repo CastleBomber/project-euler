@@ -1,0 +1,9 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "c:\\users\\castlebomber\\documents\\github\\project-euler\\c++\\14-longest-collatz-sequence\\longestcollatzsequence\\longestcollatzsequence\\module.ixx",
+        "ProvidedModule": "Module",
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

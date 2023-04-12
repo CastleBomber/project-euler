@@ -19,7 +19,9 @@
  *
  * Examples:
  * 1 - returns 1 becuase its the number of terms in the sequence
- * 2 - return 2
+ * 2 - returns 2
+ * 3 - returns 8
+ * 4 - returns 3
  *
  * References:
  * https://www.enjoyalgorithms.com/blog/top-down-memoization-vs-bottom-up-tabulation
@@ -30,19 +32,24 @@
  *
  *  Visual Studio:
  *      code folding: select region, ctrl+m+m
- *      full screen: shift+alt+enter
+ *      full-screen: shift+alt+enter
+ *		solution explorer: shift+alt+L
+ *      (start debugger to access watchlist)
+ *      watchlist: ctrl+alt+W,1
+ *      add to watchlist: shift+F9
  *
  */
 
 #include <iostream>
 #include <map>
+#include <unordered_map>
 #include <string>
 #include <string_view>
 
 using namespace std;
 
-int collatzSequence(map<int, int> table, int startingNumber);
-int checkTabulization(map<int, int> table, int number);
+int collatzSequence(map<int, int> &table, int startingNumber);
+int checkTabulization(map<int, int> &table, int number);
 int isOdd(int number);
 
 /**
@@ -58,8 +65,8 @@ int isOdd(int number);
 int collatzSequence(map<int, int> &table, int startingNumber)
 {
     map<int, int> collatzTable = table;
-    int finalNumber = startingNumber; // decrements through sequence until reaches 1
-    int sequenceCount = 1;            // number of terms for given number to reach 1
+    int currentNumber = startingNumber; // decrements through sequence until reaches 1
+    int sequenceCount = 1;              // number of terms for given number to reach 1
 
     // Error Check
     if (startingNumber < 1)
@@ -70,29 +77,33 @@ int collatzSequence(map<int, int> &table, int startingNumber)
     }
 
     // Loops and updates given number until its value is 1
-    while ((finalNumber != 1))
+    while ((currentNumber != 1))
     {
+
+
         // Check if number already in the table
-        if (sequenceCount = checkTabulization(collatzTable, finalNumber))
+        if (checkTabulization(collatzTable, currentNumber))
         {
+            sequenceCount += checkTabulization(collatzTable, currentNumber);
             return sequenceCount;
         }
 
-        if (isOdd(finalNumber))
+        if (isOdd(currentNumber))
         {
             // Odd number -> increased and becomes even
-            finalNumber = (3 * finalNumber) + 1;
+            currentNumber = (3 * currentNumber) + 1;
         }
         else
         {
             // Even number -> decreases and becomes odd || even
-            finalNumber = finalNumber / 2;
+            currentNumber = currentNumber / 2;
         }
 
         sequenceCount++;
     }
 
     collatzTable.emplace(startingNumber, sequenceCount); // Add to table
+    table = collatzTable;
 
     return sequenceCount;
 }
@@ -117,12 +128,12 @@ int checkTabulization(map<int, int> &table, int number)
 {
     map<int, int> tableCheck = table;
     int sequenceLength = 0;
-
-    for (auto &item : tableCheck)
+    
+    for (auto &[key,value] : tableCheck)
     {
-        if (number == item.key)
+        if (number == key)
         {
-            return item.value;
+            return value;
         }
     }
 
@@ -143,24 +154,24 @@ int isOdd(int number)
 
 int main()
 {
-    int currentTerm = 1;          // checks for which number gives the largest sequence
-    int maxTerm = 1000000;        // largest number to check
-    int numTerms = 0;             // number of terms to cascade down to 1
+    map<int, int> table;          // stores each number and its chain count
     int longestChainProducer = 0; // produces the longest chain in the sequence
-    int longestChainCount = 0;    // stores the highest value of numTerms from longestChainProducer
-    map<int, int> table;          // stores LCS values of numbers
+    int longestChainCount = 0;    // stores the highest value of currentChainCount from longestChainProducer
+    int currentTerm = 1;          // checks for which number gives the largest sequence
+    int maxTerm = 10;             // largest number to check
+    int currentChainCount = 0;    // current number's chain count
 
     while (currentTerm != maxTerm)
     {
-        numTerms = collatzSequence(table, currentTerm);
+        currentChainCount = collatzSequence(table, currentTerm);
 
-        if (longestChainCount < numTerms)
+        if (longestChainCount < currentChainCount)
         {
-            longestChainCount = numTerms;
+            longestChainCount = currentChainCount;
             longestChainProducer = currentTerm;
         }
 
-        currentTerm++;
+         currentTerm++;
     }
 
     cout << "The number: " << longestChainProducer
